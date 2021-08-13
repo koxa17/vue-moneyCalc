@@ -2,4 +2,13 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
-createApp(App).use(router).mount("#app");
+import components from './views/index'
+
+const app = createApp(App)
+
+// Глобальная регистрация компонентов
+components.forEach(component => {
+    app.component(component.name, component)
+});
+
+app.use(router).mount('#app')
