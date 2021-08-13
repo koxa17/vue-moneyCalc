@@ -19,7 +19,7 @@
         <span class="journal__money">0 {{options.moneyCurrency.sign}}</span>
       </li>
     </ul>
-    <button class="btn btn__costs" @click="this.$emit('adding')">Добавить {{options.listName}}</button>
+    <button class="btn btn__costs" @click="$emit('to-form')">Добавить {{options.listName}}</button>
   </section>
 </template>
 

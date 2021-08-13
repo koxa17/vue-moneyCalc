@@ -1,9 +1,19 @@
 <template>
-  <div>
-<!--    <component is="Form" :config="{operationsName: 'Расход',btnCancel: true, classBtn: {addBtn: 'add-costs', cancelBtn: 'cancel-costs'}}" @adding-operation="" @cancel-operation="handlerCancel"></component>-->
-    <FinanceList :options="options"/>
-  </div>
+  <keep-alive>
+    <transition name="flip" mode="out-in">
+      <component
+          :is="currentComponent"
+          :config="config"
+          :options="options"
+          @add-operation="handlerAdding"
+          @cancel-operation="handlerCancel"
+          @to-form="toForm"></component>
+    </transition>
+  </keep-alive>
+
+
 </template>
+
 
 <script>
 
@@ -12,27 +22,33 @@ import FinanceList from "../components/Finance-list";
 
 export default {
   name: 'Costs',
-  components: {FinanceList},
-  component: {Form, FinanceList},
+  components: {FinanceList, Form},
   data() {
     return {
-      addition: false,
       fomData: {},
-      component: 'FinanceList',
+      currentComponent: 'FinanceList',
       options: {
         listName: 'Расход',
         moneyCurrency: {
           name: 'RUB', sign: '₽', country: 'Россия'
         }
+      },
+      config: {
+        operationsName: 'Расход',
+        btnCancel: true,
+        classBtn: {addBtn: 'add-costs', cancelBtn: 'cancel-costs'}
       }
     }
   },
   methods: {
     handlerCancel() {
-      this.component = 'FinanceList'
+      this.currentComponent = 'FinanceList'
     },
     handlerAdding() {
-      console.log()
+      console.log('adding work')
+    },
+    toForm() {
+      this.currentComponent = 'Form'
     }
   }
 }
@@ -61,15 +77,31 @@ export default {
   }
 }
 
-.add-costs{
+.add-costs {
   background: #ff2700;
   color: white;
   border-color: #ff2700;
+
   &:hover {
     color: #ff2700;
     background: #fff;
   }
 }
-.cancel-costs{}
 
+.flip-enter-active {
+  transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53); //ease-in-quad
+  transform-origin: 50% 50%;
+}
+
+.flip-leave-active {
+  transform-origin: 50% 50%;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); //ease-out-quad
+}
+
+.flip-enter-from,
+.flip-leave-to {
+  transform-origin: 50% 50%;
+  transform: scaleY(0) translateZ(0);
+  opacity: 0;
+}
 </style>
