@@ -1,43 +1,35 @@
 <template>
-  <Form v-if="addition" :config="{operationsName: 'Расход',btnCancel: true, classBtn: {addBtn: 'add-costs', cancelBtn: 'cancel-costs'}}" @adding-operation="" @cancel-operation="handlerCancel" />
-  <section class="journal journal__costs" v-else>
-    <div class="journal__title">
-      <h3>Расходы</h3>
-      <span class="journal__currency">RUB</span>
-    </div>
-      <ul class="journal__list">
-        <li class="journal__item journal__item-minus">
-          Сегодня
-          <span class="journal__money">0 ₴</span>
-<!--           <button class="journal_delete">x</button>-->
-        </li>
-        <li class="journal__item journal__item-minus">
-          Неделя
-          <span class="journal__money">0 ₴</span>
-        </li>
-        <li class="journal__item journal__item-minus">
-          Месяц
-          <span class="journal__money">0 ₴</span>
-        </li>
-      </ul>
-      <button class="btn btn__costs" @click="addition = true">Расход</button>
-  </section>
-
+  <div>
+<!--    <component is="Form" :config="{operationsName: 'Расход',btnCancel: true, classBtn: {addBtn: 'add-costs', cancelBtn: 'cancel-costs'}}" @adding-operation="" @cancel-operation="handlerCancel"></component>-->
+    <FinanceList :options="options"/>
+  </div>
 </template>
 
 <script>
 
+import Form from "../components/Form";
+import FinanceList from "../components/Finance-list";
+
 export default {
   name: 'Costs',
+  components: {FinanceList},
+  component: {Form, FinanceList},
   data() {
     return {
       addition: false,
-      fomData: {}
+      fomData: {},
+      component: 'FinanceList',
+      options: {
+        listName: 'Расход',
+        moneyCurrency: {
+          name: 'RUB', sign: '₽', country: 'Россия'
+        }
+      }
     }
   },
   methods: {
     handlerCancel() {
-      this.addition = false
+      this.component = 'FinanceList'
     },
     handlerAdding() {
       console.log()
