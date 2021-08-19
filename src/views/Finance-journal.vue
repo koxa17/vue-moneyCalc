@@ -1,7 +1,7 @@
 <template>
   <div>
     <costs/>
-    <Income/>
+    <income/>
   </div>
 </template>
 
