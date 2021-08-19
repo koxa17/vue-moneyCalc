@@ -1,17 +1,16 @@
 <template>
-  <keep-alive>
-    <transition name="flip" mode="out-in">
-      <component
-          :is="currentComponent"
-          :config="config"
-          :options="options"
-          @add-operation="handlerAdding"
-          @cancel-operation="handlerCancel"
-          @to-form="toForm"></component>
-    </transition>
-  </keep-alive>
-
-
+  <transition name="flip" mode="out-in">
+    <keep-alive>
+        <component
+            :is="currentComponent"
+            :config="config"
+            :options="options"
+            @add-operation="handlerAdding"
+            @cancel-operation="handlerCancel"
+            @to-form="toForm">
+        </component>
+    </keep-alive>
+  </transition>
 </template>
 
 
@@ -31,12 +30,16 @@ export default {
         listName: 'Расход',
         moneyCurrency: {
           name: 'RUB', sign: '₽', country: 'Россия'
+        },
+        classes: {
+          btn: 'btn__costs',
+          journal: 'journal__item-minus'
         }
       },
       config: {
         operationsName: 'Расход',
         btnCancel: true,
-        classBtn: {addBtn: 'add-costs', cancelBtn: 'cancel-costs'}
+        classBtn: {addBtn: 'add-costs', cancelBtn: 'cancel-costs'},
       }
     }
   },
@@ -55,14 +58,6 @@ export default {
 </script>
 
 <style lang="scss">
-.btn {
-  padding: 10px;
-  line-height: 25px;
-  width: 100%;
-  border-radius: 10px;
-  margin-top: 10px;
-  background: white;
-}
 
 .btn__costs {
   color: #ff2700;
@@ -104,4 +99,5 @@ export default {
   transform: scaleY(0) translateZ(0);
   opacity: 0;
 }
+
 </style>
