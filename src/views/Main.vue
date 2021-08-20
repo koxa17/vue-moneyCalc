@@ -11,7 +11,7 @@
 import FinanceJournal from "./Finance-journal";
 import TotalBalance from "./Total-balance";
 import TotalBtn from "./Total-btn";
-import {getAllData} from "../api/api";
+import { mapActions } from 'vuex'
 
 export default {
   name: "Main",
@@ -21,9 +21,16 @@ export default {
       data: {},
     };
   },
-  async mounted() {
-    this.data = await getAllData()
+  mounted() {
+    this.GET_ALL_JOURNAL()
+      .then(res => this.data = res)
+    console.log(this.data)
   },
+  methods: {
+    ...mapActions([
+        'GET_ALL_JOURNAL'
+    ])
+  }
 };
 </script>
 
