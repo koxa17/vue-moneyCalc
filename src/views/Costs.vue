@@ -1,60 +1,60 @@
 <template>
   <transition name="flip" mode="out-in">
     <keep-alive>
-        <component
-            :is="currentComponent"
-            :config="config"
-            :options="options"
-            @add-operation="handlerAdding"
-            @cancel-operation="handlerCancel"
-            @to-form="toForm">
-        </component>
+      <component
+        :is="currentComponent"
+        :config="config"
+        :options="options"
+        @add-operation="handlerAdding"
+        @cancel-operation="handlerCancel"
+        @to-form="toForm"
+      >
+      </component>
     </keep-alive>
   </transition>
 </template>
 
-
 <script>
-
 export default {
-  name: 'Costs',
+  name: "Costs",
   data() {
     return {
       fomData: {},
-      currentComponent: 'Finance-list',
+      currentComponent: "Finance-list",
       options: {
-        listName: 'Расход',
+        listName: "Расход",
         moneyCurrency: {
-          name: 'RUB', sign: '₽', country: 'Россия'
+          name: "RUB",
+          sign: "₽",
+          country: "Россия",
         },
         classes: {
-          btn: 'btn__costs',
-          journal: 'journal__item-minus'
-        }
+          btn: "btn__costs",
+          journal: "journal__item-minus",
+        },
       },
       config: {
-        operationsName: 'Расход',
+        operationsName: "Расход",
         btnCancel: true,
-        classBtn: {addBtn: 'add-costs', cancelBtn: 'cancel-costs'},
-      }
-    }
+        classBtn: { addBtn: "add-costs", cancelBtn: "cancel-costs" },
+      },
+    };
   },
   methods: {
     handlerCancel() {
-      this.currentComponent = 'Finance-list'
+      this.currentComponent = "Finance-list";
     },
     handlerAdding() {
-      console.log('adding work')
+      console.log("adding work");
     },
     toForm() {
-      this.currentComponent = 'Form'
-    }
-  }
-}
+      this.currentComponent = "Form";
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-
 .btn__costs {
   color: #ff2700;
   font-size: 18px;
@@ -95,5 +95,4 @@ export default {
   transform: scaleY(0) translateZ(0);
   opacity: 0;
 }
-
 </style>

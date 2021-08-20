@@ -1,25 +1,27 @@
 <template>
   <section class="journal journal__costs">
     <div class="journal__title">
-      <h3>{{options.listName}}</h3>
-      <span class="journal__currency">{{options.moneyCurrency.name}}</span>
+      <h3>{{ options.listName }}</h3>
+      <span class="journal__currency">{{ options.moneyCurrency.name }}</span>
     </div>
     <ul class="journal__list">
       <li class="journal__item" :class="options.classes.journal">
         Сегодня
-        <span class="journal__money">0 {{options.moneyCurrency.sign}}</span>
+        <span class="journal__money">0 {{ options.moneyCurrency.sign }}</span>
         <!--           <button class="journal_delete">x</button>-->
       </li>
       <li class="journal__item" :class="options.classes.journal">
         Неделя
-        <span class="journal__money">0 {{options.moneyCurrency.sign}}</span>
+        <span class="journal__money">0 {{ options.moneyCurrency.sign }}</span>
       </li>
       <li class="journal__item" :class="options.classes.journal">
         Месяц
-        <span class="journal__money">0 {{options.moneyCurrency.sign}}</span>
+        <span class="journal__money">0 {{ options.moneyCurrency.sign }}</span>
       </li>
     </ul>
-    <button class="btn" :class="options.classes.btn" @click="$emit('to-form')">Добавить {{options.listName}}</button>
+    <button class="btn" :class="options.classes.btn" @click="$emit('to-form')">
+      Добавить {{ options.listName }}
+    </button>
   </section>
 </template>
 
@@ -31,22 +33,21 @@ export default {
       type: Object,
       listName: {
         type: String,
-        required: true
+        required: true,
       },
       moneyCurrency: {
         type: Object,
-        default: () => ({name: 'ГРН', sign: '₴', country: 'Украина'})
+        default: () => ({ name: "ГРН", sign: "₴", country: "Украина" }),
       },
       classes: {
         type: Object,
-      }
+      },
     },
   },
-}
+};
 </script>
 
 <style lang="scss">
-
 .btn {
   padding: 10px;
   line-height: 25px;
@@ -55,5 +56,4 @@ export default {
   margin-top: 10px;
   background: white;
 }
-
 </style>

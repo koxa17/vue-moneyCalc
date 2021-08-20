@@ -1,14 +1,14 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import components from './components';
+import components from "./components";
+import store from "./store";
 
-const app = createApp(App)
+const app = createApp(App).use(store);
 
 // Глобальная регистрация компонентов
-components.forEach(component => {
-    app.component(component.name, component)
+components.forEach((component) => {
+  app.component(component.name, component);
 });
 
-app.use(router).mount('#app')
-
+app.use(router).mount("#app");

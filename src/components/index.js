@@ -1,9 +1,6 @@
 import Form from "./Form";
 import FinanceList from "./Finance-list";
 
-const components = [
-    Form,
-    FinanceList,
-]
+const components = [Form, FinanceList];
 
-export default components
+export default components;

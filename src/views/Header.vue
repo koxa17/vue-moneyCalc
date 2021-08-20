@@ -7,10 +7,8 @@
 
 <script>
 export default {
-  name: 'Header'
-}
+  name: "Header",
+};
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
