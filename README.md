@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Планы на будущее
+```
+Установить Noty vue JS 
+```
+https://vuejsexamples.net/vuejs-noty/

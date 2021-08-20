@@ -1,0 +1,1 @@
+export {fireBase, getAllData} from './fireBase';

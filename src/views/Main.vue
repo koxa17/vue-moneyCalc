@@ -1,28 +1,28 @@
 <template>
-  <main>
     <div class="container" id="container">
       <total-balance />
       <finance-journal />
       <total-btn />
     </div>
-  </main>
 </template>
 
 <script>
-import data from "../assets/data/data.json";
+
 import FinanceJournal from "./Finance-journal";
 import TotalBalance from "./Total-balance";
 import TotalBtn from "./Total-btn";
+import {getAllData} from "../api/api";
+
 export default {
   name: "Main",
-  components: {TotalBtn, TotalBalance, FinanceJournal },
+  components: {TotalBtn, TotalBalance, FinanceJournal},
   data() {
     return {
-      data: data,
+      data: {},
     };
   },
-  created() {
-    console.log(this.data.operations);
+  async mounted() {
+    this.data = await getAllData()
   },
 };
 </script>
