@@ -1,22 +1,22 @@
 <template>
   <div>
-    <Header/>
-    <Main/>
+    <Header />
+    <Main />
   </div>
 </template>
 
 <script>
-
 import Main from "./views/Main";
 import Header from "./views/Header";
+
 export default {
-  name: 'App',
-  components: {Header, Main},
-}
+  name: "App",
+  components: { Header, Main },
+};
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 html {
   box-sizing: border-box;
@@ -35,7 +35,7 @@ html {
 body {
   margin: 0;
   background-color: #f9f9f9;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   color: black;
   min-height: 100vh;
@@ -43,9 +43,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
-
 
 img {
   max-width: 100%;
@@ -78,10 +76,10 @@ p {
   width: 400px;
 }
 
-
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   line-height: 1.5;
-
 }
 
 h4 {
@@ -92,5 +90,4 @@ h4 {
   font-style: italic;
   color: #b1b1b1;
 }
-
 </style>

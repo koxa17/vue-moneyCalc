@@ -1,7 +1,7 @@
 <template>
   <div>
-    <costs/>
-    <income/>
+    <costs />
+    <income />
   </div>
 </template>
 
@@ -9,12 +9,10 @@
 import Costs from "./Costs";
 import Income from "./Income";
 export default {
-  name: 'Finance-journal',
-  components: {Income, Costs},
-  props: {}
-}
+  name: "Finance-journal",
+  components: { Income, Costs },
+  props: {},
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -9,10 +9,9 @@
 
 <script>
 export default {
-  name: 'total-balance',
-  props: {
-  },
-}
+  name: "total-balance",
+  props: {},
+};
 </script>
 
 <style lang="scss">
@@ -33,5 +32,4 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-
 </style>

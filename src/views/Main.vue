@@ -1,32 +1,33 @@
 <template>
   <main>
     <div class="container" id="container">
-      <total-balance/>
-      <finance-journal/>
+      <total-balance />
+      <finance-journal />
+      <total-btn />
     </div>
   </main>
 </template>
 
 <script>
-import data from '../assets/data/data.json'
+import data from "../assets/data/data.json";
 import FinanceJournal from "./Finance-journal";
 import TotalBalance from "./Total-balance";
+import TotalBtn from "./Total-btn";
 export default {
-  name: 'Main',
-  components: {TotalBalance, FinanceJournal},
+  name: "Main",
+  components: {TotalBtn, TotalBalance, FinanceJournal },
   data() {
-    return{
-      data: data
-    }
+    return {
+      data: data,
+    };
   },
   created() {
-    console.log(this.data.operations)
-  }
-}
+    console.log(this.data.operations);
+  },
+};
 </script>
 
 <style lang="scss">
-
 main {
   margin-top: 30px;
 }
@@ -35,14 +36,14 @@ main {
   margin-top: 40px;
 }
 
-.journal__title{
+.journal__title {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
 }
 
-.journal__currency{
+.journal__currency {
   font-style: italic;
   color: #b1b1b1;
 }
@@ -51,8 +52,8 @@ main {
   align-items: center;
   background-color: #fff;
   border-width: 1px;
-  border-left: 10px solid;
-  border-right: 10px solid;
+  border-left: 10px;
+  border-right: 10px;
   border-style: solid;
   border-radius: 10px;
   color: gray;
@@ -61,10 +62,10 @@ main {
   padding: 10px;
   margin: 10px 0;
   line-height: 25px;
-  &:hover{
+  &:hover {
     cursor: pointer;
     color: black;
-   }
+  }
 }
 
 .journal__item-plus {
@@ -126,5 +127,4 @@ main {
   font-family: Roboto, sans-serif;
   font-size: 16px;
 }
-
 </style>
