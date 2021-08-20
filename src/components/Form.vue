@@ -6,7 +6,8 @@
     </div>
     <form id="form">
       <label>
-        <input @model="formData.operation.value" name="operation" type="text" class="operation__fields operation__name" placeholder="Наименование операции">
+        <input @model="formData.operation.value" name="operation" type="text" class="operation__fields operation__name"
+               :placeholder="placeholder">
       </label>
       <label>
         <input @model="formData.money.value" name="money" type="number" class="operation__fields operation__amount" placeholder="Введите сумму">
@@ -60,6 +61,11 @@ export default {
     cancelHandler() {
       this.$emit('cancel-operation')
     },
+  },
+  computed: {
+    placeholder() {
+      return `Наименование ${this.config.operationsName}а`
+    }
   }
 }
 </script>

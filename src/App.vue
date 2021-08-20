@@ -9,6 +9,7 @@
 
 import Main from "./views/Main";
 import Header from "./views/Header";
+
 export default {
   name: 'App',
   components: {Header, Main},
@@ -43,7 +44,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 

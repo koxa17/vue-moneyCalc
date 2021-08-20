@@ -16,16 +16,12 @@
 
 <script>
 
-import Form from "../components/Form";
-import FinanceList from "../components/Finance-list";
-
 export default {
   name: 'Costs',
-  components: {FinanceList, Form},
   data() {
     return {
       fomData: {},
-      currentComponent: 'FinanceList',
+      currentComponent: 'Finance-list',
       options: {
         listName: 'Расход',
         moneyCurrency: {
@@ -45,7 +41,7 @@ export default {
   },
   methods: {
     handlerCancel() {
-      this.currentComponent = 'FinanceList'
+      this.currentComponent = 'Finance-list'
     },
     handlerAdding() {
       console.log('adding work')
