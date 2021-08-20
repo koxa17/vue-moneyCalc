@@ -1,1 +1,1 @@
-export {fireBase, getAllData} from './fireBase';
+export { getAllData } from './fireBase';

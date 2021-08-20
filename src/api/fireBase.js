@@ -62,4 +62,4 @@ async function getAllData() {
     return responseExample;
 }
 
-export {getAllData, firebaseConfig}
+export {getAllData}

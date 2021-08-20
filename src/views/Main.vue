@@ -11,7 +11,7 @@
 import FinanceJournal from "./Finance-journal";
 import TotalBalance from "./Total-balance";
 import TotalBtn from "./Total-btn";
-import { mapActions } from 'vuex'
+import { mapActions,mapGetters } from 'vuex'
 
 export default {
   name: "Main",
@@ -21,14 +21,20 @@ export default {
       data: {},
     };
   },
-  mounted() {
-    this.GET_ALL_JOURNAL()
-      .then(res => this.data = res)
-    console.log(this.data)
+  async mounted() {
+    await this.GET_ALL_JOURNAL_FOR_FIREBASE()
+    this.data = this.GET_ALL_JOURNAL()
+    this.GET_LIST_INCOMES()
+    this.GET_LIST_COSTS()
   },
   methods: {
     ...mapActions([
-        'GET_ALL_JOURNAL'
+        'GET_ALL_JOURNAL_FOR_FIREBASE'
+    ]),
+    ...mapGetters([
+      'GET_ALL_JOURNAL',
+      'GET_LIST_INCOMES',
+      'GET_LIST_COSTS',
     ])
   }
 };
