@@ -28,3 +28,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Установить Noty vue JS 
 ```
 https://vuejsexamples.net/vuejs-noty/
+
+```
+Добавить select с выбором валюты
+```
+```
+Добавить конвертацию валюты
+```
