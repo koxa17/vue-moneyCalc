@@ -12,10 +12,10 @@ const firebaseConfig = {
 
 const [get, put, post, del] = ['get', 'put', 'post', 'delete'];
 
-// const responseExample = {
-//     status: true,
-//     message: '',
-// };
+const responseExample = {
+    status: true,
+    message: '',
+};
 
 const instance = axios.create({
     baseURL: firebaseConfig.databaseURL,
@@ -57,8 +57,9 @@ let request = (type, url, data) => {
 };
 
 async function getAllData() {
-    const data = await request(get,'/operations.json').then(res => res.data)
-    return data
+    const response = await request(get,'/operations.json').then(res => res)
+    responseExample.message = response.data;
+    return responseExample;
 }
 
 export {getAllData, firebaseConfig}
