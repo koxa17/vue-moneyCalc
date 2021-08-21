@@ -6,7 +6,6 @@ export default createStore({
     all_operations: [],
     income: [],
     cost: [],
-    formData: {}
   },
   mutations: {
     SET_OPERATIONS_TO_STATE: (state, payload) => {
