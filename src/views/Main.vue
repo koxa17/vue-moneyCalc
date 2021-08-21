@@ -24,8 +24,6 @@ export default {
   async mounted() {
     await this.GET_ALL_JOURNAL_FOR_FIREBASE()
     this.data = this.GET_ALL_JOURNAL()
-    this.GET_LIST_INCOMES()
-    this.GET_LIST_COSTS()
   },
   methods: {
     ...mapActions([
@@ -33,8 +31,6 @@ export default {
     ]),
     ...mapGetters([
       'GET_ALL_JOURNAL',
-      'GET_LIST_INCOMES',
-      'GET_LIST_COSTS',
     ])
   }
 };

@@ -3,13 +3,13 @@ import {getAllData} from "../api/api";
 
 export default createStore({
   state: {
-    all_operations: {},
-    income: {},
-    cost: {}
+    all_operations: [],
+    income: [],
+    cost: []
   },
   mutations: {
     SET_OPERATIONS_TO_STATE: (state, payload) => {
-      state[payload.stateName] = payload.value
+      state[payload.stateName].push(payload.value)
     }
   },
   actions: {
@@ -21,15 +21,16 @@ export default createStore({
   modules: {},
   getters: {
     GET_ALL_JOURNAL(state) {
-      console.log(state.all_operations)
       return state.all_operations
     },
-    GET_LIST_INCOMES(state, getters) {
-      // console.log(state)
-      return getters.state
+    // TODO сделать геттер возврата всех доходов
+    GET_LIST_INCOMES: state => findYear => {
+      return state.all_operations.find(year => {
+        return null
+      })
     },
+    // TODO сделать геттер возврата всех возвратов
     GET_LIST_COSTS(state, getters) {
-      // console.log(state)
       return getters.state
     }
   }
