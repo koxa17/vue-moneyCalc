@@ -5,12 +5,16 @@ export default createStore({
   state: {
     all_operations: [],
     income: [],
-    cost: []
+    cost: [],
+    formData: {}
   },
   mutations: {
     SET_OPERATIONS_TO_STATE: (state, payload) => {
       state[payload.stateName].push(payload.value)
-    }
+    },
+    SET_FORMDATA: (state, data) => {
+      state.formData = data
+    },
   },
   actions: {
     async GET_ALL_JOURNAL_FOR_FIREBASE({commit}) {
@@ -31,7 +35,7 @@ export default createStore({
     },
     // TODO сделать геттер возврата всех возвратов
     GET_LIST_COSTS(state, getters) {
-      return getters.state
+      return getters.GET_ALL_JOURNAL
     }
   }
 });

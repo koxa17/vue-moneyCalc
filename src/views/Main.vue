@@ -31,6 +31,8 @@ export default {
     ]),
     ...mapGetters([
       'GET_ALL_JOURNAL',
+      'GET_LIST_INCOMES',
+      'GET_LIST_COSTS',
     ])
   }
 };

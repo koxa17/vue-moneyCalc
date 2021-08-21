@@ -7,7 +7,7 @@
     <form id="form">
       <label>
         <input
-          @model="formData.operation.value"
+          v-model="formData.operation.value"
           name="operation"
           type="text"
           class="operation__fields operation__name"
@@ -16,7 +16,7 @@
       </label>
       <label>
         <input
-          @model="formData.money.value"
+          v-model="formData.money.value"
           name="money"
           type="number"
           class="operation__fields operation__amount"
@@ -28,7 +28,7 @@
           type="button"
           class="operation__button operation__button-add"
           :class="config.classBtn.addBtn || null"
-          @click="addHandler"
+          @click.prevent="addHandler"
         >
           Добавить {{ config.operationsName }}
         </button>
@@ -83,6 +83,7 @@ export default {
   methods: {
     addHandler() {
       this.$emit("add-operation");
+
     },
     cancelHandler() {
       this.$emit("cancel-operation");
