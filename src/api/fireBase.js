@@ -1,4 +1,5 @@
 import axios from "axios";
+import {getDate} from "../assets/js/main";
 
 const firebaseConfig = {
     apiKey: "AIzaSyANm3wl3FMW3Hbwrjksp1kO1pg1dIBW_oo",
