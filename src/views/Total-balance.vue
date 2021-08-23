@@ -67,13 +67,19 @@ export default {
 .box select {
   //background-color: #0563af;
   color: black;
-  border: none;
   font-size: 28px;
-  width: 50px;
+  width: 70px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   outline: none;
+  padding: 0 5px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-top: 7px;
+  border-bottom: 7px;
+  border-style: solid;
+  border-color: transparent;
 }
 
 .box::before {
@@ -82,7 +88,7 @@ export default {
   background-repeat: no-repeat;
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 5px;
   width: 35px;
   color: rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.1);
@@ -94,7 +100,15 @@ export default {
   cursor: pointer;
 }
 
+select:focus {
+  border-color: black;
+  border-top-color: #808080;
+  border-bottom-color: #808080;
+}
+
 .box select option {
   padding: 30px;
 }
+
+
 </style>
