@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <h1>Кошелек</h1>
     <h2>Калькулятор финансов</h2>
   </header>
@@ -11,4 +11,8 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.header {
+  margin-bottom: 15px;
+}
+</style>
