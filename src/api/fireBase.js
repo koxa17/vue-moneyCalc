@@ -63,4 +63,16 @@ async function getAllData() {
     return responseExample;
 }
 
+async function createOperation(type, data) {
+    const year = getDate('year')
+    const month = getDate('month')
+
+
+
+    const response = await request(post, `/operations/${typeof year === 'number' ? year : Number(year)}/${month}/${type}.json`, data)
+    responseExample.message = response.data;
+    console.log(responseExample)
+    return responseExample;
+}
+
 export {getAllData}

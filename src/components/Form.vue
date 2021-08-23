@@ -7,7 +7,7 @@
     <form id="form">
       <label>
         <input
-          v-model="formData.operation.value"
+          v-model="formData.name"
           name="operation"
           type="text"
           class="operation__fields operation__name"
@@ -16,7 +16,7 @@
       </label>
       <label>
         <input
-          v-model="formData.money.value"
+          v-model="formData.money"
           name="money"
           type="number"
           class="operation__fields operation__amount"
@@ -71,19 +71,18 @@ export default {
   data() {
     return {
       formData: {
-        operation: {
-          value: "",
-        },
-        money: {
-          value: "",
-        },
+        id: Date.now(),
+        name: '',
+        money: '',
+        income: this.operationsName === "Доход",
       },
     };
   },
   methods: {
     addHandler() {
       this.$emit("add-operation");
-
+      console.log(this.formData)
+      // createOperation('income', this.formData).then(res => res).catch(err => console.log(err))
     },
     cancelHandler() {
       this.$emit("cancel-operation");
