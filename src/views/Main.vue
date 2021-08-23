@@ -11,7 +11,7 @@
 import FinanceJournal from "./Finance-journal";
 import TotalBalance from "./Total-balance";
 import TotalBtn from "./Total-btn";
-import { mapActions,mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: "Main",

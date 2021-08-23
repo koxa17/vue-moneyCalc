@@ -6,6 +6,18 @@ export default createStore({
     all_operations: [],
     income: [],
     cost: [],
+    current_currency: {
+      'RUB': {
+        name: "RUB",
+        sign: "₽",
+        country: "Россия",
+      },
+      'UAH': {
+        name: "UAH",
+        sign: "₴",
+        country: "Украина",
+      },
+    }
   },
   mutations: {
     SET_OPERATIONS_TO_STATE: (state, payload) => {
@@ -14,6 +26,9 @@ export default createStore({
     SET_FORMDATA: (state, data) => {
       state.formData = data
     },
+    ADD_NEW_CURRENCY: (state, currency) => {
+      state.current_currency[currency.name] = currency
+    }
   },
   actions: {
     async GET_ALL_JOURNAL_FOR_FIREBASE({commit}) {
@@ -35,6 +50,10 @@ export default createStore({
     // TODO сделать геттер возврата всех возвратов
     GET_LIST_COSTS(state, getters) {
       return getters.GET_ALL_JOURNAL
+    },
+    GET_CURRENCY: state => name => {
+      name = name.toUpperCase()
+      return state.current_currency[name]
     }
   }
 });
