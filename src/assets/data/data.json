@@ -6,29 +6,82 @@
           {
             "id": 1,
             "name": "Зарплата",
-            "money": 54000
+            "money": 54000,
+            "income": true,
+            "date_added": null
           },
           {
             "id": 2,
             "name": "Зарплата",
-            "money": 54000
+            "money": 54000,
+            "income": true,
+            "date_added": null
           },
           {
             "id": 3,
             "name": "Зарплата",
-            "money": 54000
+            "money": 54000,
+            "income": true,
+            "date_added": null
           }
         ],
         "costs": [
           {
             "id": 1,
             "name": "Продукты",
-            "money": 350
+            "money": 350,
+            "income": false,
+            "date_added": null
           },
           {
             "id": 2,
             "name": "Турбаза",
-            "money": 250
+            "money": 250,
+            "income": false,
+            "date_added": null
+          }
+        ]
+      }
+    },
+    "2022": {
+      "juli": {
+        "income": [
+          {
+            "id": 1,
+            "name": "Зарплата",
+            "money": 54000,
+            "income": true,
+            "date_added": null
+          },
+          {
+            "id": 2,
+            "name": "Зарплата",
+            "money": 54000,
+            "income": true,
+            "date_added": null
+          },
+          {
+            "id": 3,
+            "name": "Зарплата",
+            "money": 54000,
+            "income": true,
+            "date_added": null
+          }
+        ],
+        "costs": [
+          {
+            "id": 1,
+            "name": "Продукты",
+            "money": 350,
+            "income": false,
+            "date_added": null
+          },
+          {
+            "id": 2,
+            "name": "Турбаза",
+            "money": 250,
+            "income": false,
+            "date_added": null
           }
         ]
       }

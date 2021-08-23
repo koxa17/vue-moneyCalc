@@ -7,7 +7,7 @@
     <form id="form">
       <label>
         <input
-          @model="formData.operation.value"
+          v-model="formData.name"
           name="operation"
           type="text"
           class="operation__fields operation__name"
@@ -16,7 +16,7 @@
       </label>
       <label>
         <input
-          @model="formData.money.value"
+          v-model="formData.money"
           name="money"
           type="number"
           class="operation__fields operation__amount"
@@ -28,7 +28,7 @@
           type="button"
           class="operation__button operation__button-add"
           :class="config.classBtn.addBtn || null"
-          @click="addHandler"
+          @click.prevent="addHandler"
         >
           Добавить {{ config.operationsName }}
         </button>
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import {createOperation} from "../api/api";
+
 export default {
   name: "Form",
   props: {
@@ -71,18 +73,18 @@ export default {
   data() {
     return {
       formData: {
-        operation: {
-          value: "",
-        },
-        money: {
-          value: "",
-        },
+        id: Date.now(),
+        name: '',
+        money: '',
+        income: this.operationsName === "Доход",
       },
     };
   },
   methods: {
     addHandler() {
       this.$emit("add-operation");
+      console.log(this.formData)
+      createOperation('income', this.formData)
     },
     cancelHandler() {
       this.$emit("cancel-operation");

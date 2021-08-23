@@ -19,7 +19,6 @@ export default {
   name: "Costs",
   data() {
     return {
-      fomData: {},
       currentComponent: "Finance-list",
       options: {
         listName: "Расход",
@@ -44,8 +43,9 @@ export default {
     handlerCancel() {
       this.currentComponent = "Finance-list";
     },
-    handlerAdding() {
+    handlerAdding(data) {
       console.log("adding work");
+      this.currentComponent = "Finance-list";
     },
     toForm() {
       this.currentComponent = "Form";

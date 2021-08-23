@@ -22,3 +22,20 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Планы на будущее
+```
+Установить Noty vue JS 
+```
+https://vuejsexamples.net/vuejs-noty/
+
+```
+Добавить select с выбором валюты
+```
+```
+Добавить конвертацию валюты
+```
+```
+Добавить в футер текущий день.
+Пример: Сегодня понедельник 23.08.2021 12:07:32 
+```

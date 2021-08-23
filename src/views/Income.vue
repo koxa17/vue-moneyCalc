@@ -19,7 +19,6 @@ export default {
   name: "Income",
   data() {
     return {
-      fomData: {},
       currentComponent: "Finance-list",
       options: {
         listName: "Доход",
