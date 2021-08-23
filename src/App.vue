@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container" id="container">
     <Header />
     <Main />
   </div>
@@ -72,8 +72,10 @@ p {
 }
 
 .container {
+  min-width: 320px;
   margin: 0 auto;
-  width: 400px;
+  padding: 10px 15px;
+  width: 100%;
 }
 
 h1,

@@ -1,5 +1,5 @@
 <template>
-    <div class="container" id="container">
+    <div>
       <total-balance />
       <finance-journal />
       <total-btn />
