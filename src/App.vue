@@ -71,11 +71,16 @@ p {
   text-align: center;
 }
 
-.container {
-  min-width: 320px;
-  margin: 0 auto;
-  padding: 10px 15px;
+.app {
   width: 100%;
+}
+
+.container {
+  min-width: 250px;
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px 10px;
 }
 
 h1,
