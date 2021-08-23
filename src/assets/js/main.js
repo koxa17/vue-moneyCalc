@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-moment().format();
+moment.locale('ru');
 
 const day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -22,5 +22,8 @@ function getDate(currentDate) {
     return result
 }
 
+function getCurrentDateAndTime() {
+    return `${moment().format('L')} ${moment().format('LTS')}`
+}
 
-export {getDate}
+export {getDate, getCurrentDateAndTime}

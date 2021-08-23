@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getDate} from "../assets/js/main";
+import {getCurrentDateAndTime, getDate} from "../assets/js/main";
 
 const firebaseConfig = {
     apiKey: "AIzaSyANm3wl3FMW3Hbwrjksp1kO1pg1dIBW_oo",
@@ -67,7 +67,7 @@ async function createOperation(type, data) {
     const year = getDate('year')
     const month = getDate('month')
 
-
+    data.date_added = getCurrentDateAndTime()
 
     const response = await request(post, `/operations/${typeof year === 'number' ? year : Number(year)}/${month}/${type}.json`, data)
     responseExample.message = response.data;
