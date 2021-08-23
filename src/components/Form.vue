@@ -1,7 +1,7 @@
 <template>
   <section class="operation">
     <div class="operation__header">
-      <h3 class="operation__header-title">Новый {{ config.operationsName }}</h3>
+      <h3 class="operation__header-title">Новый {{ config.operationsName.value }}</h3>
       <span class="operation__header-currency currency">RUB</span>
     </div>
     <form id="form">
@@ -30,7 +30,7 @@
           :class="config.classBtn.addBtn || null"
           @click.prevent="addHandler"
         >
-          Добавить {{ config.operationsName }}
+          Добавить {{ config.operationsName.value }}
         </button>
         <button
           v-if="config.btnCancel"
@@ -54,8 +54,14 @@ export default {
   props: {
     config: {
       operationsName: {
-        type: String,
+        type: Object,
         required: true,
+        name: {
+          type: String
+        },
+        value: {
+          type: String
+        }
       },
       btnCancel: {
         type: Boolean,
@@ -76,15 +82,14 @@ export default {
         id: Date.now(),
         name: '',
         money: '',
-        income: this.operationsName === "Доход",
+        income: this.config.operationsName.name === "income",
       },
     };
   },
   methods: {
     addHandler() {
       this.$emit("add-operation");
-      console.log(this.formData)
-      createOperation('income', this.formData)
+      createOperation(this.config.operationsName.name, this.formData)
     },
     cancelHandler() {
       this.$emit("cancel-operation");
@@ -92,7 +97,7 @@ export default {
   },
   computed: {
     placeholder() {
-      return `Наименование ${this.config.operationsName}а`;
+      return `Наименование ${this.config.operationsName.value}а`;
     },
   },
 };

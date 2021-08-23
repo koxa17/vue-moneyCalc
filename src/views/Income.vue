@@ -33,7 +33,10 @@ export default {
         },
       },
       config: {
-        operationsName: "Доход",
+        operationsName: {
+          name: "income",
+          value: "Доход"
+        },
         btnCancel: true,
         classBtn: { addBtn: "add-income", cancelBtn: "cancel-costs" },
       },
@@ -45,6 +48,7 @@ export default {
     },
     handlerAdding() {
       console.log("adding work");
+      this.currentComponent = "Finance-list";
     },
     toForm() {
       this.currentComponent = "Form";
