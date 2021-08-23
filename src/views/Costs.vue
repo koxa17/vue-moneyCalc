@@ -33,7 +33,10 @@ export default {
         },
       },
       config: {
-        operationsName: "Расход",
+        operationsName: {
+          name: "cost",
+          value: "Расход"
+        },
         btnCancel: true,
         classBtn: { addBtn: "add-costs", cancelBtn: "cancel-costs" },
       },
