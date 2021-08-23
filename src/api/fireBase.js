@@ -65,7 +65,7 @@ async function getAllData() {
 
 async function createOperation(type, data) {
     const year = getDate('year')
-    const month = getDate('month')
+    const month = getDate('month').toLowerCase()
 
     data.date_added = getCurrentDateAndTime()
 
@@ -75,4 +75,4 @@ async function createOperation(type, data) {
     return responseExample;
 }
 
-export {getAllData}
+export {getAllData, createOperation}

@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import {createOperation} from "../api/api";
+
 export default {
   name: "Form",
   props: {
@@ -82,7 +84,7 @@ export default {
     addHandler() {
       this.$emit("add-operation");
       console.log(this.formData)
-      // createOperation('income', this.formData).then(res => res).catch(err => console.log(err))
+      createOperation('income', this.formData)
     },
     cancelHandler() {
       this.$emit("cancel-operation");
