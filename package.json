@@ -2,13 +2,11 @@
   "name": "vue-calculate",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://koxa17/github.io/vue-moneyCulc",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b build"
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "axios": "^0.21.1",
