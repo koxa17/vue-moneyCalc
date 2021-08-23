@@ -6,16 +6,18 @@ export default createStore({
     all_operations: [],
     income: [],
     cost: [],
-    current_currency: {
+    currencies: {
       'RUB': {
         name: "RUB",
         sign: "₽",
         country: "Россия",
+        id: 1
       },
       'UAH': {
         name: "UAH",
         sign: "₴",
         country: "Украина",
+        id: 2
       },
     }
   },
@@ -27,7 +29,7 @@ export default createStore({
       state.formData = data
     },
     ADD_NEW_CURRENCY: (state, currency) => {
-      state.current_currency[currency.name] = currency
+      state.currencies[currency.name] = currency
     }
   },
   actions: {
@@ -51,9 +53,12 @@ export default createStore({
     GET_LIST_COSTS(state, getters) {
       return getters.GET_ALL_JOURNAL
     },
+    GET_ALL_CURRENCIES(state) {
+      return state.currencies
+    },
     GET_CURRENCY: state => name => {
       name = name.toUpperCase()
-      return state.current_currency[name]
+      return state.currencies[name]
     }
   }
 });
