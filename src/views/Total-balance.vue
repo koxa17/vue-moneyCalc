@@ -7,6 +7,9 @@
           <select name="currency" id="select" >
             <option v-for="(currency, key) of currencies" :value="currency.name" :key="currency.id">{{ currency.sign }}</option>
           </select>
+
+          <v-select :options="currencies"></v-select>
+
         </div>
       </div>
     </div>
@@ -15,12 +18,13 @@
 
 <script>
 
-
 import {mapGetters} from "vuex";
+import MySelect from "../components/My-select";
+import VSelect from "../components/v-select";
 
 export default {
   name: "total-balance",
-  components: {},
+  components: {VSelect},
   props: {},
   data(){
     return {
@@ -57,6 +61,7 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+
 
 .box {
   display: inline;
