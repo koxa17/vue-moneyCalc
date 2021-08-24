@@ -1,20 +1,35 @@
 <template>
-  <div class="v-select">
-    <p class="title" @click="optionsVisible = !optionsVisible">Select</p>
+  <div class="v-select" @click="visibleOptions($event)">
+    <div class="current__select">
+      <p class="title">{{selectedCurrency.sign}}</p>
+      <span class="icon" :class="optionsVisible ? 'focus' : ''"></span>
+    </div>
     <div class="options" v-if="optionsVisible">
-      <p v-for="option in options" :key="option.value" @click="selectOption(option)">{{option.name}}</p>
+      <p v-for="option in options" :key="option.value" @click.stop="selectOption(option)">{{option.name}}</p>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "v-select",
   props: {
     options: {
-      type: Object,
+      type: Array,
       default () {
-        return {}
+        return []
+      }
+    },
+    selectedCurrency: {
+      type: Object,
+      default() {
+        return {
+          name: "Name",
+          sign: "S",
+          country: "Country",
+          id: 1
+        };
       }
     }
   },
@@ -24,8 +39,11 @@ export default {
       }
   },
   methods: {
+    visibleOptions(e) {
+      this.optionsVisible = !this.optionsVisible
+    },
     selectOption(option) {
-      console.log(option)
+      this.$emit('select-current', option)
     },
     hideOptions() {
       this.optionsVisible = false
@@ -33,8 +51,9 @@ export default {
   },
   mounted() {
     document.addEventListener('click', this.hideOptions, true)
+    console.log(this.selectedCurrency)
   },
-  beforeDestroy() {
+  destroy() {
     document.removeEventListener('click', this.hideOptions)
   }
 }
@@ -44,24 +63,45 @@ export default {
 
 .v-select{
   position: relative;
+  cursor: pointer;
+  margin-right: 20px;
 }
 
-.title {
-  border: 1px solid #eaeaea;
+.current__select {
+  position: relative;
+  .icon {
+    background-image: url('../assets/images/arrow_down.svg');
+    background-repeat: no-repeat;
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    transform: rotate(90deg);
+    transition: all .3s ease-in-out;
+    &.focus {
+      transition: all .3s ease-in-out;
+      transform: rotate(0deg);
+    }
+  }
 }
 
 .v-select p{
   margin: 0;
   cursor: pointer;
+  padding: 0 8px;
 }
 
 .options {
-  border: 1px solid #eaeaea;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   position: absolute;
   top: 100%;
-  right: 0;
-  width: 100%;
   background: #fff;
+  & p:not(:last-child){
+    border-bottom: 1px solid #ccc;
+  }
   & p:hover {
     background: #e7e7e7;
   }

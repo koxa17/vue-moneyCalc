@@ -6,19 +6,25 @@ export default createStore({
     all_operations: [],
     income: [],
     cost: [],
-    currencies: {
-      'RUB': {
+    currencies: [
+       {
         name: "RUB",
         sign: "₽",
         country: "Россия",
         id: 1
       },
-      'UAH': {
+      {
         name: "UAH",
         sign: "₴",
         country: "Украина",
         id: 2
       },
+    ],
+    selectCurrency: {
+        name: "RUB",
+        sign: "₽",
+        country: "Россия",
+        id: 1
     }
   },
   mutations: {
@@ -30,6 +36,9 @@ export default createStore({
     },
     ADD_NEW_CURRENCY: (state, currency) => {
       state.currencies[currency.name] = currency
+    },
+    SET_SELECT_CURRENCY: (state, data) => {
+      state.selectCurrency = data
     }
   },
   actions: {
@@ -59,6 +68,9 @@ export default createStore({
     GET_CURRENCY: state => name => {
       name = name.toUpperCase()
       return state.currencies[name]
+    },
+    GET_SELECTED_CURRENCY: (state) => {
+      return state.selectCurrency
     }
   }
 });

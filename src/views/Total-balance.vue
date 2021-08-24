@@ -3,14 +3,7 @@
     <div class="total__header">
       <h3>Баланс</h3>
       <div class="total__balance">0
-        <div class="box">
-          <select name="currency" id="select" >
-            <option v-for="(currency, key) of currencies" :value="currency.name" :key="currency.id">{{ currency.sign }}</option>
-          </select>
-
-          <v-select :options="currencies"></v-select>
-
-        </div>
+        <v-select :options="currencies" :selected-currency="getCurrentCurrency" @select-current="setSelectedCurrency"></v-select>
       </div>
     </div>
   </section>
@@ -18,8 +11,7 @@
 
 <script>
 
-import {mapGetters} from "vuex";
-import MySelect from "../components/My-select";
+import {mapGetters, mapMutations} from "vuex";
 import VSelect from "../components/v-select";
 
 export default {
@@ -28,17 +20,29 @@ export default {
   props: {},
   data(){
     return {
-      currencies: {}
+      currencies: {},
+      currentCurrency: {}
     }
   },
   mounted() {
     this.currencies = this.GET_ALL_CURRENCIES()
-    console.log(this.currencies)
+  },
+  computed:{
+    getCurrentCurrency() {
+      return this.currentCurrency = this.GET_SELECTED_CURRENCY()
+    }
   },
   methods: {
     ...mapGetters([
-        'GET_ALL_CURRENCIES'
-    ])
+        'GET_ALL_CURRENCIES',
+        'GET_SELECTED_CURRENCY'
+    ]),
+    ...mapMutations([
+      'SET_SELECT_CURRENCY'
+    ]),
+    setSelectedCurrency(select) {
+        this.SET_SELECT_CURRENCY(select)
+    }
   },
 };
 </script>
@@ -52,14 +56,16 @@ export default {
 }
 
 .total__balance {
-  font-size: 28px;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 .total__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 
