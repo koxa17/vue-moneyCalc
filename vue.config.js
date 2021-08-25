@@ -1,4 +1,4 @@
 module.exports = {
   lintOnSave: false,
-  publicPath: '/vue-moneyCalc/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/vue-moneyCalc/' : '/'
 };

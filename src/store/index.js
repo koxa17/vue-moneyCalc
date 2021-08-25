@@ -1,11 +1,32 @@
 import { createStore } from "vuex";
 import {getAllData} from "../api/api";
+import {getLocalStorage} from "../assets/js/localeStorage";
 
 export default createStore({
   state: {
     all_operations: [],
     income: [],
     cost: [],
+    currencies: [
+       {
+        name: "RUB",
+        sign: "₽",
+        country: "Россия",
+        id: 1
+      },
+      {
+        name: "UAH",
+        sign: "₴",
+        country: "Украина",
+        id: 2
+      },
+    ],
+    selectCurrency: {
+        name: "RUB",
+        sign: "₽",
+        country: "Россия",
+        id: 1
+    }
   },
   mutations: {
     SET_OPERATIONS_TO_STATE: (state, payload) => {
@@ -14,6 +35,12 @@ export default createStore({
     SET_FORMDATA: (state, data) => {
       state.formData = data
     },
+    ADD_NEW_CURRENCY: (state, currency) => {
+      state.currencies[currency.name] = currency
+    },
+    SET_SELECT_CURRENCY: (state, data) => {
+        state.selectCurrency = data
+    }
   },
   actions: {
     async GET_ALL_JOURNAL_FOR_FIREBASE({commit}) {
@@ -35,6 +62,20 @@ export default createStore({
     // TODO сделать геттер возврата всех возвратов
     GET_LIST_COSTS(state, getters) {
       return getters.GET_ALL_JOURNAL
+    },
+    GET_ALL_CURRENCIES(state) {
+      return state.currencies
+    },
+    GET_CURRENCY: state => name => {
+      name = name.toUpperCase()
+      return state.currencies[name]
+    },
+    GET_SELECTED_CURRENCY: (state) => {
+      let data = JSON.parse(getLocalStorage())
+      if(data) {
+        return data
+      }
+      return state.selectCurrency
     }
   }
 });
