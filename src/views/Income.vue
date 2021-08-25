@@ -5,6 +5,7 @@
         :is="currentComponent"
         :config="config"
         :options="options"
+        :selected-currency="selectCurrentCurrency"
         @add-operation="handlerAdding"
         @cancel-operation="handlerCancel"
         @to-form="toForm"
@@ -15,6 +16,8 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: "Income",
   data() {
@@ -22,11 +25,6 @@ export default {
       currentComponent: "Finance-list",
       options: {
         listName: "Доход",
-        moneyCurrency: {
-          name: "RUB",
-          sign: "₽",
-          country: "Россия",
-        },
         classes: {
           btn: "btn__income",
           journal: "journal__item-plus",
@@ -40,9 +38,21 @@ export default {
         btnCancel: true,
         classBtn: { addBtn: "add-income", cancelBtn: "cancel-costs" },
       },
+      currentCurrency: {}
     };
   },
+  mounted() {
+    this.currentCurrency = this.GET_SELECTED_CURRENCY()
+  },
+  computed: {
+    selectCurrentCurrency() {
+      return this.currentCurrency = this.GET_SELECTED_CURRENCY()
+    }
+  },
   methods: {
+    ...mapGetters([
+      'GET_SELECTED_CURRENCY'
+    ]),
     handlerCancel() {
       this.currentComponent = "Finance-list";
     },
