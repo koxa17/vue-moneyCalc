@@ -3,7 +3,7 @@
     <div class="total__header">
       <h3>Баланс</h3>
       <div class="total__balance">0
-        <v-select :options="currencies" :selected-currency="getCurrentCurrencyToLocalStorage" @select-current="setSelectedCurrency"></v-select>
+        <v-select :options="currencies" :selected-currency="getCurrentCurrency" @select-current="setSelectedCurrency"></v-select>
       </div>
     </div>
   </section>
@@ -29,7 +29,7 @@ export default {
     this.currentCurrency = this.GET_SELECTED_CURRENCY()
   },
   computed:{
-    getCurrentCurrencyToLocalStorage() {
+    getCurrentCurrency() {
       return this.currentCurrency =  this.GET_SELECTED_CURRENCY()
     }
   },

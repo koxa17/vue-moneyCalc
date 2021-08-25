@@ -52,7 +52,6 @@ export default {
   },
   mounted() {
     document.addEventListener('click', this.hideOptions, true)
-    console.log(this.selectedCurrency)
   },
   destroy() {
     document.removeEventListener('click', this.hideOptions)
