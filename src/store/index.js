@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import {getAllData} from "../api/api";
+import {getLocalStorage} from "../assets/js/localeStorage";
 
 export default createStore({
   state: {
@@ -38,7 +39,7 @@ export default createStore({
       state.currencies[currency.name] = currency
     },
     SET_SELECT_CURRENCY: (state, data) => {
-      state.selectCurrency = data
+        state.selectCurrency = data
     }
   },
   actions: {
@@ -70,6 +71,10 @@ export default createStore({
       return state.currencies[name]
     },
     GET_SELECTED_CURRENCY: (state) => {
+      let data = JSON.parse(getLocalStorage())
+      if(data) {
+        return data
+      }
       return state.selectCurrency
     }
   }

@@ -16,11 +16,12 @@ export default {
   name: "v-select",
   props: {
     options: {
-      type: Array,
+      type: [Array, Object],
       default () {
         return []
       }
     },
+    value:{},
     selectedCurrency: {
       type: Object,
       default() {
@@ -76,7 +77,7 @@ export default {
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 0;
+    top: -2px;
     right: -30px;
     transform: rotate(90deg);
     transition: all .3s ease-in-out;
