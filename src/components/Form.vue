@@ -48,6 +48,7 @@
 
 <script>
 import {createOperation} from "../api/api";
+import {mapGetters} from "vuex";
 
 export default {
   name: "Form",
@@ -87,9 +88,12 @@ export default {
     };
   },
   methods: {
+    ...mapGetters([
+      'GET_CURRENT_USER'
+    ]),
     addHandler() {
       this.$emit("add-operation");
-      createOperation(this.config.operationsName.name, this.formData)
+      createOperation(this.GET_CURRENT_USER() ,this.config.operationsName.name, this.formData)
     },
     cancelHandler() {
       this.$emit("cancel-operation");

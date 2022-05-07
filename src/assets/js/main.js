@@ -26,4 +26,20 @@ function getCurrentDateAndTime() {
     return `${moment().format('L')} ${moment().format('LTS')}`
 }
 
-export {getDate, getCurrentDateAndTime}
+function passwordVerification() {
+    let the_pass="abc";
+    document.getElementById("popup").style.display = "none";
+
+    let password = document.getElementById("pass").value;
+
+    if(password === the_pass)  {
+        alert('Correct, try another...');
+        return true;
+    }
+    else {
+        alert('Wrong...!');
+        return false;
+    }
+}
+
+export {getDate, getCurrentDateAndTime, passwordVerification}
