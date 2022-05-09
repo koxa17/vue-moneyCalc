@@ -7,16 +7,6 @@
 
 export default {
   name: "App",
-  created() {
-    if (sessionStorage.getItem("user") ) {
-      this.$store.replaceState(Object.assign({}, this.$store.state.user,JSON.parse(sessionStorage.getItem("store"))))
-    }
-
-    // Сохраняем информацию в vuex в sessionStorage при обновлении страницы
-    window.addEventListener("beforeunload",()=>{
-      sessionStorage.setItem("user",JSON.stringify(this.$store.state.user))
-    })
-  }
 };
 </script>
 

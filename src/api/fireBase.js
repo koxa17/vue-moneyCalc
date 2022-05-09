@@ -87,7 +87,7 @@ async function createOperation(user, type, data) {
     return responseExample;
 }
 
-async function recordUserData(uid, data) {
+async function recordBDUserData(uid, data) {
     const response = await request(post, `/users/${uid}/info.json`, data)
     responseExample.message = response.data;
     return responseExample;
@@ -99,4 +99,4 @@ async function getUserInfo(uid) {
     return responseExample.message;
 }
 
-export {getAllData, createOperation, auth, recordUserData, getUserInfo}
+export {getAllData, createOperation, auth, recordBDUserData, getUserInfo}

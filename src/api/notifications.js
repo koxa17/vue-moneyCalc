@@ -9,7 +9,7 @@ function showMessageUserNoty(variant, text) {
         theme: 'metroui',
         type: variant,
         text: text,
-        timeout: 3000,
+        timeout: 4000,
         layout: 'topRight',
     }).show();
 }

@@ -1,9 +1,10 @@
 import {createStore} from "vuex";
 import {getAllData} from "../api/api";
 import {getLocalStorage} from "../assets/js/localeStorage";
-import {auth, getUserInfo, recordUserData} from "../api/fireBase";
+import {auth, getUserInfo, recordBDUserData} from "../api/fireBase";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import showMessageUserNoty from "../api/notifications";
+import {errorsMessage} from "../api/errors";
 
 export default createStore({
     state: {
@@ -34,7 +35,8 @@ export default createStore({
             name: 'Гость',
             email: 'example@mail.ru',
             uid: '1'
-        }
+        },
+        error: null
     },
     mutations: {
         SET_OPERATIONS_TO_STATE: (state, payload) => {
@@ -62,6 +64,12 @@ export default createStore({
         },
         SET_USER_MAIL: (state, data) => {
             state.user.email = data
+        },
+        SET_ERROR(state, error) {
+            state.error = error
+        },
+        CLEAR_ERROR(state) {
+            state.error = null
         }
     },
     actions: {
@@ -72,24 +80,25 @@ export default createStore({
         async SIGN_IN({commit}, userData) {
             await signInWithEmailAndPassword(auth, userData.email, userData.password)
                 .then((userCredential) => {
-                    const user = userCredential.user;
                     this.dispatch('ON_AUTH')
                     return userCredential
                 })
                 .catch((error) => {
                     const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error(`errorCode: ${errorCode} errorMessage: ${errorMessage}`)
-                    showMessageUserNoty('error', errorMessage)
+                    console.error(errorCode)
+                    showMessageUserNoty('error', errorsMessage(errorCode))
                     throw error
                 });
         },
         async LOG_OUT() {
             await signOut(auth).then(() => {
+                localStorage.removeItem('user')
                 showMessageUserNoty('success', `Вы вышли из системы!`)
             }).catch((error) => {
-                const errorMessage = error.message;
-                showMessageUserNoty('error', errorMessage)
+                const errorCode = error.code;
+                console.error(errorCode)
+                showMessageUserNoty('error', errorsMessage(errorCode))
+                throw error
             })
         },
         ON_AUTH({commit, state}) {
@@ -101,6 +110,7 @@ export default createStore({
                         userInfo = getInfo[userInfoKey]
                     }
                     await commit('SET_USER_DATA', {...userInfo, uid: user.uid})
+                    localStorage.setItem('user', JSON.stringify({...userInfo, uid: user.uid}))
                     showMessageUserNoty('success', `Добро пожаловать ${state.user.name}`);
                 }
             });
@@ -111,19 +121,19 @@ export default createStore({
                     const user = userCredential.user;
                     const info = {
                         email: userData.email,
-                        name: userData.name
-                    }
-                    commit('SET_USER_DATA', {
                         name: userData.name,
-                        mail: userData.email,
                         uid: user.uid
-                    })
-                    recordUserData(user.uid, info)
+                    }
+                    commit('SET_USER_DATA', info)
+                    localStorage.setItem('user', JSON.stringify(info))
+                    recordBDUserData(user.uid, info)
                     showMessageUserNoty('success', `Регистрация прошла успешно!`);
                 })
                 .catch((error) => {
-                    const errorMessage = error.message;
-                    showMessageUserNoty('error', errorMessage)
+                    const errorCode = error.code;
+                    console.error(errorCode)
+                    showMessageUserNoty('error', errorsMessage(errorCode))
+                    throw error
                 });
         }
     },
@@ -158,6 +168,9 @@ export default createStore({
         GET_CURRENT_USER(state) {
             return state.user
         },
+        GET_ERROR(state) {
+            return state.error
+        }
     },
     modules: {}
 });

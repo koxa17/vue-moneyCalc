@@ -17,4 +17,3 @@ export async function updateUser(newData) {
         showMessageUserNoty('error', errorMessage)
     });
 }
-

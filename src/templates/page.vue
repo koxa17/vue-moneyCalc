@@ -32,34 +32,40 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
-import { firebaseLogout } from "../api/auth";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 
 export default {
   name: "page",
   data(){
-    return {
-      user: null
+    return {}
+  },
+  created() {
+    const user = localStorage.getItem('user')
+    if(user) {
+      this.SET_USER_DATA(JSON.parse(user))
     }
   },
   methods: {
     ...mapGetters([
-      'GET_CURRENT_USER'
+      'GET_CURRENT_USER',
     ]),
     ...mapActions([
       'LOG_OUT',
     ]),
+    ...mapMutations([
+       'SET_USER_DATA'
+    ]),
     async logout() {
       await this.LOG_OUT()
+      localStorage.removeItem('user')
       this.$router.push('/auth')
     }
   },
   computed: {
     currentUser() {
-      debugger;
       return this.GET_CURRENT_USER()
-    }
-  }
+    },
+  },
 }
 </script>
 

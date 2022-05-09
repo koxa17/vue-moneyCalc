@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapMutations} from "vuex";
 import notifications from "../api/notifications";
 
 export default {
@@ -93,6 +93,9 @@ export default {
     ...mapActions([
       'SIGN_IN',
         'REGISTER'
+    ]),
+    ...mapMutations([
+       'SET_ERROR'
     ]),
     async sendForm(login) {
       if (login) {
