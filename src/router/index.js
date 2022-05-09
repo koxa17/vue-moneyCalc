@@ -1,16 +1,24 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
+import Auth from "../views/Auth";
+import Main from "../views/Main";
 
 const routes = [
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   component: () =>
-  //     import("../views/About.vue"),
-  // },
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: Auth
+  },
+  {
+    path: '/',
+    name: 'Main',
+    component: Main
+  },
+
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
+  hashbang: false,
   routes,
 });
 

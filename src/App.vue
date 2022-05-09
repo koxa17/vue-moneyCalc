@@ -1,21 +1,17 @@
 <template>
-  <div class="container" id="container">
-    <Header />
-    <Main />
-  </div>
+    <router-view></router-view>
 </template>
 
 <script>
-import Main from "./views/Main";
-import Header from "./views/Header";
+
 
 export default {
   name: "App",
-  components: { Header, Main },
 };
 </script>
 
 <style lang="scss">
+@import '~bootstrap/dist/css/bootstrap.css';
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 html {
@@ -39,10 +35,14 @@ body {
   font-size: 16px;
   color: black;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  //align-items: center;
+}
+
+label {
+  display: block;
 }
 
 img {
@@ -73,14 +73,6 @@ p {
 
 .app {
   width: 100%;
-}
-
-.container {
-  min-width: 250px;
-  max-width: 580px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 15px 10px;
 }
 
 h1,

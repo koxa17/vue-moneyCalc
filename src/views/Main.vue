@@ -1,21 +1,24 @@
 <template>
-    <div>
+  <page>
+      <Header />
       <total-balance />
       <finance-journal />
       <total-btn />
-    </div>
+  </page>
 </template>
 
 <script>
-
+import Header from "./Header";
 import FinanceJournal from "./Finance-journal";
 import TotalBalance from "./Total-balance";
 import TotalBtn from "./Total-btn";
-import { mapActions, mapGetters } from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
+import page from '../templates/page'
+
 
 export default {
   name: "Main",
-  components: {TotalBtn, TotalBalance, FinanceJournal},
+  components: {TotalBtn, TotalBalance, FinanceJournal, Header, page},
   data() {
     return {
       data: {},
@@ -27,7 +30,7 @@ export default {
   },
   methods: {
     ...mapActions([
-        'GET_ALL_JOURNAL_FOR_FIREBASE'
+      'GET_ALL_JOURNAL_FOR_FIREBASE'
     ]),
     ...mapGetters([
       'GET_ALL_JOURNAL',
@@ -73,6 +76,7 @@ main {
   padding: 10px;
   margin: 10px 0;
   line-height: 25px;
+
   &:hover {
     cursor: pointer;
     color: black;
@@ -110,6 +114,7 @@ main {
 .journal__item:hover .journal_delete {
   opacity: 1;
 }
+
 .all {
   display: flex;
   margin-bottom: 50px;
@@ -124,6 +129,7 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
+
   &:hover {
     cursor: pointer;
   }
