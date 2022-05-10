@@ -3,7 +3,7 @@ module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? '/vue-moneyCalc/' : '/',
   pages: {
     index: {
-      entry: 'src/index/main.js',
+      entry: 'src/main.js',
       template: 'public/index.html',
       filename: 'index.html',
       title: 'Index Page',
