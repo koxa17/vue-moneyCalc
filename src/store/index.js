@@ -1,10 +1,10 @@
 import {createStore} from "vuex";
-import {getAllData} from "../api/api";
-import {getLocalStorage} from "../assets/js/localeStorage";
-import {auth, getUserInfo, recordBDUserData} from "../api/fireBase";
+import {getAllData} from "../api/api.js";
+import {getLocalStorage, saveToLocaleStorage} from "../assets/js/localeStorage.js";
+import {auth, getUserInfo, recordBDUserData} from "../api/fireBase.js";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
-import showMessageUserNoty from "../api/notifications";
-import {errorsMessage} from "../api/errors";
+import showMessageUserNoty from "../api/notifications.js";
+import {errorsMessage} from "../api/errors.js";
 
 export default createStore({
     state: {
@@ -110,7 +110,7 @@ export default createStore({
                         userInfo = getInfo[userInfoKey]
                     }
                     await commit('SET_USER_DATA', {...userInfo, uid: user.uid})
-                    localStorage.setItem('user', JSON.stringify({...userInfo, uid: user.uid}))
+                    saveToLocaleStorage('user', JSON.stringify({...userInfo, uid: user.uid}))
                     showMessageUserNoty('success', `Добро пожаловать ${state.user.name}`);
                 }
             });
@@ -125,7 +125,7 @@ export default createStore({
                         uid: user.uid
                     }
                     commit('SET_USER_DATA', info)
-                    localStorage.setItem('user', JSON.stringify(info))
+                    saveToLocaleStorage('user', JSON.stringify(info))
                     recordBDUserData(user.uid, info)
                     showMessageUserNoty('success', `Регистрация прошла успешно!`);
                 })

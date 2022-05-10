@@ -1,8 +1,8 @@
 import {
     updateProfile
 } from "firebase/auth";
-import {auth} from "./fireBase";
-import showMessageUserNoty from "./notifications";
+import {auth} from "./fireBase.js";
+import showMessageUserNoty from "./notifications.js";
 
 
 export async function updateUser(newData) {
